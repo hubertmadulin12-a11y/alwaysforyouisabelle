@@ -1,0 +1,2125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Ysabelle ♡</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+
+    font-family: Georgia, "Times New Roman", serif;
+    color: white;
+
+    background:
+        radial-gradient(circle at 15% 15%, rgba(131,67,112,.32), transparent 32%),
+        radial-gradient(circle at 85% 85%, rgba(79,61,139,.25), transparent 35%),
+        radial-gradient(circle at 50% 50%, rgba(70,34,58,.15), transparent 55%),
+        linear-gradient(135deg, #07050a, #110a14, #08060c);
+}
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+.cursor-glow {
+    position: fixed;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(224,157,193,.10),
+            transparent 70%
+        );
+
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: white;
+    opacity: .3;
+
+    animation:
+        twinkle var(--duration)
+        ease-in-out infinite alternate;
+
+    animation-delay: var(--delay);
+}
+
+@keyframes twinkle {
+    from {
+        opacity: .12;
+        transform: scale(.6);
+    }
+
+    to {
+        opacity: .9;
+        transform: scale(1.5);
+    }
+}
+
+/* =========================================================
+   NORMAL FLOATING PARTICLES
+========================================================= */
+
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.18);
+    filter: blur(.5px);
+
+    animation:
+        floatParticle var(--duration)
+        linear infinite;
+
+    animation-delay: var(--delay);
+}
+
+@keyframes floatParticle {
+
+    0% {
+        transform:
+            translateY(110vh)
+            translateX(0)
+            scale(.5);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .6;
+    }
+
+    85% {
+        opacity: .5;
+    }
+
+    100% {
+        transform:
+            translateY(-20vh)
+            translateX(var(--drift))
+            scale(1.2);
+
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   SCREENS
+========================================================= */
+
+.screen {
+    position: relative;
+    z-index: 5;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+}
+
+.screen.active {
+    display: flex;
+
+    animation:
+        screenIn .9s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes screenIn {
+    from {
+        opacity: 0;
+        transform: scale(1.03);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 760px;
+    text-align: center;
+}
+
+/* =========================================================
+   GLASS
+========================================================= */
+
+.glass {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    box-shadow:
+        0 40px 120px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+}
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+.password-box {
+    position: relative;
+
+    max-width: 560px;
+    margin: auto;
+
+    padding: 60px 45px;
+
+    border-radius: 35px;
+
+    overflow: hidden;
+}
+
+.password-box::before {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    top: -180px;
+    right: -100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(210,120,170,.22),
+            transparent 70%
+        );
+
+    filter: blur(20px);
+}
+
+.tiny {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    opacity: .45;
+}
+
+.password-box h1 {
+    position: relative;
+
+    font-weight: normal;
+
+    font-size:
+        clamp(42px, 9vw, 75px);
+
+    line-height: 1;
+
+    margin: 25px 0 20px;
+}
+
+.password-box h1 span {
+    color: #e8b7d0;
+}
+
+.password-box p {
+    position: relative;
+
+    font-size: 15px;
+    opacity: .55;
+
+    margin-bottom: 32px;
+}
+
+.input-wrap {
+    position: relative;
+    max-width: 310px;
+    margin: auto;
+}
+
+input {
+    width: 100%;
+
+    padding: 17px 20px;
+
+    border-radius: 50px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    background:
+        rgba(0,0,0,.28);
+
+    color: white;
+
+    outline: none;
+
+    text-align: center;
+
+    font-size: 16px;
+
+    letter-spacing: 5px;
+
+    transition: .3s ease;
+}
+
+input::placeholder {
+    color: rgba(255,255,255,.25);
+    letter-spacing: 3px;
+}
+
+input:focus {
+    border-color:
+        rgba(230,180,210,.55);
+
+    box-shadow:
+        0 0 30px
+        rgba(180,100,150,.12);
+}
+
+button {
+    position: relative;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    color: white;
+
+    background:
+        rgba(255,255,255,.075);
+
+    padding: 14px 30px;
+
+    border-radius: 50px;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    background:
+        rgba(255,255,255,.13);
+
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.25);
+}
+
+button:active {
+    transform:
+        translateY(0)
+        scale(.97);
+}
+
+.unlock {
+    display: block;
+    margin: 18px auto 0;
+}
+
+.error {
+    height: 18px;
+
+    margin-top: 15px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    color: #e9a8c0;
+
+    opacity: 0;
+
+    transition: .3s;
+}
+
+.error.show {
+    opacity: 1;
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro {
+    text-align: center;
+}
+
+.intro h1 {
+    font-size:
+        clamp(52px, 11vw, 100px);
+
+    font-weight: normal;
+
+    line-height: .98;
+
+    margin: 28px 0;
+
+    letter-spacing: -3px;
+}
+
+.intro h1 .soft {
+    color: #dba7c2;
+}
+
+.intro p {
+    font-size: 14px;
+    opacity: .45;
+    margin-bottom: 38px;
+}
+
+.open-button {
+    padding: 16px 40px;
+}
+
+/* =========================================================
+   LETTER SCENE
+========================================================= */
+
+.letter-scene {
+    flex-direction: column;
+    text-align: center;
+}
+
+.scene-title {
+    margin-bottom: 45px;
+}
+
+.scene-title h1 {
+    font-size:
+        clamp(44px, 9vw, 78px);
+
+    font-weight: normal;
+
+    line-height: 1;
+
+    margin-top: 15px;
+
+    letter-spacing: -2px;
+}
+
+/* =========================================================
+   ENVELOPE
+========================================================= */
+
+.envelope-wrap {
+    position: relative;
+
+    width:
+        min(440px, 90vw);
+
+    height: 290px;
+
+    cursor: pointer;
+
+    perspective: 1200px;
+
+    transition:
+        transform .5s ease;
+}
+
+.envelope-wrap:hover {
+    transform:
+        translateY(-8px);
+}
+
+.envelope {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 235px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f1d9ce,
+            #dcbab1
+        );
+
+    box-shadow:
+        0 35px 70px
+        rgba(0,0,0,.55);
+}
+
+.envelope::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            transparent 49.5%,
+            rgba(110,70,70,.2) 50%,
+            transparent 50.5%
+        ),
+
+        linear-gradient(
+            215deg,
+            transparent 49.5%,
+            rgba(110,70,70,.2) 50%,
+            transparent 50.5%
+        );
+}
+
+.envelope-label {
+    position: absolute;
+
+    z-index: 6;
+
+    left: 27px;
+    top: 28px;
+
+    color: #62434c;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+.flap {
+    position: absolute;
+
+    z-index: 8;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 160px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e5c9be,
+            #cfa9a1
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 75%
+        );
+
+    transform-origin: top center;
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.envelope-wrap:hover .flap {
+    transform: rotateX(18deg);
+}
+
+.seal {
+    position: absolute;
+
+    z-index: 10;
+
+    left: 50%;
+    top: 116px;
+
+    width: 60px;
+    height: 60px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #b86d87,
+            #813e5a
+        );
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.35),
+        inset 0 2px 3px
+        rgba(255,255,255,.15);
+
+    font-size: 23px;
+
+    transition:
+        transform .5s ease;
+}
+
+.envelope-wrap:hover .seal {
+    transform:
+        translateX(-50%)
+        scale(1.06);
+}
+
+.click-text {
+    margin-top: 25px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    opacity: .35;
+
+    animation:
+        pulseText 2s
+        ease-in-out infinite;
+}
+
+@keyframes pulseText {
+    50% {
+        opacity: .65;
+    }
+}
+
+/* =========================================================
+   LETTER OVERLAY
+========================================================= */
+
+.letter-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 30;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(3,2,6,.94);
+
+    backdrop-filter:
+        blur(22px);
+
+    overflow-y: auto;
+}
+
+.letter-overlay.show {
+    display: flex;
+
+    animation:
+        overlayIn .7s ease;
+}
+
+@keyframes overlayIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* =========================================================
+   DECORATIONS ONLY INSIDE LETTER SCENE
+========================================================= */
+
+.letter-decorations {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 31;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+/* LEFT HEART */
+
+.corner-heart {
+    position: absolute;
+
+    left: 4vw;
+    bottom: 7vh;
+
+    font-size:
+        clamp(45px, 7vw, 85px);
+
+    filter:
+        drop-shadow(
+            0 8px 25px
+            rgba(255,100,160,.35)
+        );
+
+    animation:
+        heartFloat 3s
+        ease-in-out infinite;
+
+    transform-origin: center;
+}
+
+@keyframes heartFloat {
+
+    0%, 100% {
+        transform:
+            translateY(0)
+            rotate(-5deg);
+    }
+
+    50% {
+        transform:
+            translateY(-15px)
+            rotate(5deg);
+    }
+}
+
+/* RIGHT TEDDY */
+
+.corner-teddy {
+    position: absolute;
+
+    right: 3vw;
+    bottom: 5vh;
+
+    font-size:
+        clamp(55px, 8vw, 95px);
+
+    filter:
+        drop-shadow(
+            0 10px 25px
+            rgba(0,0,0,.5)
+        );
+
+    animation:
+        teddyFloat 3.5s
+        ease-in-out infinite;
+}
+
+@keyframes teddyFloat {
+
+    0%, 100% {
+        transform:
+            translateY(0)
+            rotate(4deg);
+    }
+
+    50% {
+        transform:
+            translateY(-17px)
+            rotate(-4deg);
+    }
+}
+
+/* =========================================================
+   FLOATING HEARTS + TEDDY BEARS
+========================================================= */
+
+.floating-love {
+    position: absolute;
+
+    bottom: -100px;
+
+    user-select: none;
+
+    opacity: 0;
+
+    animation:
+        floatLove var(--float-time)
+        linear infinite;
+
+    animation-delay:
+        var(--float-delay);
+
+    transform:
+        translateX(0)
+        scale(var(--size));
+}
+
+@keyframes floatLove {
+
+    0% {
+        bottom: -100px;
+
+        opacity: 0;
+
+        transform:
+            translateX(0)
+            scale(var(--size))
+            rotate(0deg);
+    }
+
+    10% {
+        opacity: .7;
+    }
+
+    50% {
+        opacity: .45;
+
+        transform:
+            translateX(var(--sway))
+            scale(var(--size))
+            rotate(10deg);
+    }
+
+    85% {
+        opacity: .3;
+    }
+
+    100% {
+        bottom: 110vh;
+
+        opacity: 0;
+
+        transform:
+            translateX(calc(var(--sway) * -1))
+            scale(var(--size))
+            rotate(-12deg);
+    }
+}
+
+/* =========================================================
+   LETTER PAPER
+========================================================= */
+
+.letter-paper {
+    position: relative;
+
+    z-index: 40;
+
+    width:
+        min(680px, 95vw);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding:
+        55px
+        clamp(28px, 7vw, 70px);
+
+    color: #33282c;
+
+    background:
+        linear-gradient(
+            rgba(255,251,245,.98),
+            rgba(247,236,223,.98)
+        );
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 50px 120px
+        rgba(0,0,0,.7);
+
+    animation:
+        letterIn
+        1s
+        cubic-bezier(.16,1,.3,1);
+}
+
+@keyframes letterIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(70px)
+            rotate(1deg)
+            scale(.94);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            rotate(0)
+            scale(1);
+    }
+}
+
+.letter-paper::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 16px;
+
+    border:
+        1px solid
+        rgba(100,70,70,.13);
+
+    pointer-events: none;
+}
+
+.letter-meta {
+    position: relative;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #9b7883;
+
+    margin-bottom: 38px;
+}
+
+.letter-meta div {
+    margin-bottom: 8px;
+}
+
+.letter-paper h2 {
+    position: relative;
+
+    font-size: 34px;
+
+    font-weight: normal;
+
+    margin-bottom: 28px;
+}
+
+.letter-body {
+    position: relative;
+
+    font-size: 17px;
+
+    line-height: 1.95;
+
+    white-space: pre-line;
+}
+
+.cursor {
+    display: inline-block;
+
+    width: 2px;
+    height: 18px;
+
+    margin-left: 3px;
+
+    background: #9b667a;
+
+    vertical-align: middle;
+
+    animation:
+        blink .8s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.signature {
+    position: relative;
+
+    margin-top: 38px;
+
+    font-style: italic;
+
+    font-size: 19px;
+}
+
+.close-letter {
+    margin-top: 35px;
+
+    color: #4a3039;
+
+    border-color:
+        rgba(70,40,50,.2);
+
+    background:
+        rgba(70,40,50,.05);
+}
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
+.music-control {
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    z-index: 100;
+
+    width: 52px;
+    height: 52px;
+
+    padding: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 17px;
+
+    backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.35);
+}
+
+.music-control.visible {
+    display: flex;
+
+    animation:
+        musicButtonIn .5s ease;
+}
+
+.music-control.playing::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -5px;
+
+    border:
+        1px solid
+        rgba(230,180,210,.25);
+
+    border-radius: 50%;
+
+    animation:
+        musicRing 1.5s infinite;
+}
+
+@keyframes musicButtonIn {
+    from {
+        opacity: 0;
+        transform: scale(.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes musicRing {
+    from {
+        transform: scale(.9);
+        opacity: .8;
+    }
+
+    to {
+        transform: scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final-message {
+    text-align: center;
+
+    animation:
+        finalIn 1.5s
+        cubic-bezier(.16,1,.3,1);
+}
+
+@keyframes finalIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(40px)
+            scale(.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.final-message h1 {
+    font-size:
+        clamp(43px, 9vw, 85px);
+
+    font-weight: normal;
+
+    line-height: 1.03;
+
+    letter-spacing: -2px;
+
+    margin: 25px 0;
+}
+
+.final-message .heart {
+    display: inline-block;
+
+    font-size: 32px;
+
+    color: #d995b5;
+
+    animation:
+        heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.18);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+}
+
+.final-message p {
+    opacity: .38;
+
+    font-size: 13px;
+
+    margin-bottom: 30px;
+}
+
+/* =========================================================
+   YOUTUBE
+========================================================= */
+
+#youtubePlayer {
+    position: fixed;
+
+    width: 1px;
+    height: 1px;
+
+    left: -100px;
+    top: -100px;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width: 600px) {
+
+    .password-box {
+        padding: 45px 22px;
+        border-radius: 28px;
+    }
+
+    .password-box h1 {
+        font-size: 46px;
+    }
+
+    .intro h1 {
+        font-size: 58px;
+        letter-spacing: -2px;
+    }
+
+    .scene-title {
+        margin-bottom: 30px;
+    }
+
+    .scene-title h1 {
+        font-size: 48px;
+    }
+
+    .envelope-wrap {
+        width: 90vw;
+        height: 250px;
+    }
+
+    .envelope {
+        height: 200px;
+    }
+
+    .flap {
+        height: 135px;
+    }
+
+    .seal {
+        top: 96px;
+        width: 54px;
+        height: 54px;
+    }
+
+    .letter-paper {
+        padding: 40px 25px;
+    }
+
+    .letter-paper h2 {
+        font-size: 28px;
+    }
+
+    .letter-body {
+        font-size: 16px;
+        line-height: 1.85;
+    }
+
+    .corner-heart {
+        left: 12px;
+        bottom: 18px;
+        font-size: 48px;
+    }
+
+    .corner-teddy {
+        right: 8px;
+        bottom: 15px;
+        font-size: 58px;
+    }
+
+    .music-control {
+        right: 15px;
+        bottom: 15px;
+        width: 48px;
+        height: 48px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="background" id="background"></div>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+
+<!-- =====================================================
+     PASSWORD
+===================================================== -->
+
+<section
+    class="screen active"
+    id="passwordScreen">
+
+    <div class="container">
+
+        <div class="password-box glass">
+
+            <div class="tiny">
+                A little secret
+            </div>
+
+            <h1>
+                For <span>Ysabelle</span> ♡
+            </h1>
+
+            <p>
+                There's something I want you to see.
+            </p>
+
+            <div class="input-wrap">
+
+                <input
+                    type="password"
+                    id="passwordInput"
+                    placeholder="enter the password"
+                    maxlength="20">
+
+            </div>
+
+            <button
+                class="unlock"
+                onclick="checkPassword()">
+
+                UNLOCK
+
+            </button>
+
+            <div
+                class="error"
+                id="errorMessage">
+
+                Nope... try again.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section
+    class="screen"
+    id="introScreen">
+
+    <div class="container intro">
+
+        <div class="tiny">
+            one little thing
+        </div>
+
+        <h1>
+            I made this<br>
+            <span class="soft">for you.</span>
+        </h1>
+
+        <p>
+            Take your time.
+        </p>
+
+        <button
+            class="open-button"
+            onclick="showLetterScene()">
+
+            OPEN
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ENVELOPE
+===================================================== -->
+
+<section
+    class="screen letter-scene"
+    id="letterScene">
+
+    <div class="scene-title">
+
+        <div class="tiny">
+            something I've been meaning to say
+        </div>
+
+        <h1>
+            A letter<br>
+            for Ysabelle.
+        </h1>
+
+    </div>
+
+
+    <div
+        class="envelope-wrap"
+        onclick="openLetter()">
+
+        <div class="envelope">
+
+            <div class="envelope-label">
+                TO: YSABELLE ♡
+            </div>
+
+            <div class="flap"></div>
+
+            <div class="seal">
+                ♡
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="click-text">
+        click the letter
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LETTER READING SCENE
+===================================================== -->
+
+<div
+    class="letter-overlay"
+    id="letterOverlay">
+
+
+    <!-- FLOATING HEARTS + TEDDIES -->
+
+    <div
+        class="letter-decorations"
+        id="letterDecorations">
+
+
+        <!-- FIXED LEFT HEART -->
+
+        <div class="corner-heart">
+            ❤️
+        </div>
+
+
+        <!-- FIXED RIGHT TEDDY -->
+
+        <div class="corner-teddy">
+            🧸
+        </div>
+
+
+        <!-- FLOATING ITEMS WILL BE CREATED HERE -->
+
+    </div>
+
+
+    <!-- LETTER -->
+
+    <div class="letter-paper">
+
+        <div class="letter-meta">
+
+            <div>
+                TO: YSABELLE
+            </div>
+
+            <div>
+                FROM: HUBERT
+            </div>
+
+        </div>
+
+
+        <h2>
+            Dear Ysabelle,
+        </h2>
+
+
+        <div
+            class="letter-body"
+            id="letterBody">
+        </div>
+
+
+        <div class="signature">
+            — Hubert
+        </div>
+
+
+        <button
+            class="close-letter"
+            onclick="closeLetter()">
+
+            CLOSE
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FINAL
+===================================================== -->
+
+<section
+    class="screen"
+    id="finalScreen">
+
+    <div class="container final-message">
+
+        <div class="tiny">
+            that's all
+        </div>
+
+        <h1>
+            Whatever happens,<br>
+            I'm glad you know now.
+        </h1>
+
+        <p>
+            Some things are better said<br>
+            than left unsaid.
+        </p>
+
+        <div class="heart">
+            ♡
+        </div>
+
+        <br><br>
+
+        <button
+            onclick="location.reload()">
+
+            REPLAY
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     YOUTUBE PLAYER
+===================================================== -->
+
+<iframe
+    id="youtubePlayer"
+    allow="autoplay; encrypted-media"
+    frameborder="0">
+</iframe>
+
+
+<!-- MUSIC BUTTON -->
+
+<button
+    class="music-control"
+    id="musicControl"
+    onclick="toggleMusic()">
+
+    🔊
+
+</button>
+
+
+<script>
+
+/* =====================================================
+   PASSWORD
+===================================================== */
+
+const PASSWORD = "122526";
+
+
+function checkPassword() {
+
+    const input =
+        document.getElementById("passwordInput");
+
+    const error =
+        document.getElementById("errorMessage");
+
+
+    if (input.value === PASSWORD) {
+
+        document
+            .getElementById("passwordScreen")
+            .classList.remove("active");
+
+        document
+            .getElementById("introScreen")
+            .classList.add("active");
+
+    } else {
+
+        error.classList.add("show");
+
+        input.value = "";
+
+        input.focus();
+
+        setTimeout(() => {
+
+            error.classList.remove("show");
+
+        }, 2000);
+
+    }
+}
+
+
+/* =====================================================
+   ENTER PASSWORD
+===================================================== */
+
+document
+    .getElementById("passwordInput")
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+
+        }
+    );
+
+
+/* =====================================================
+   INTRO → LETTER SCENE
+===================================================== */
+
+function showLetterScene() {
+
+    document
+        .getElementById("introScreen")
+        .classList.remove("active");
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById("letterScene")
+            .classList.add("active");
+
+    }, 150);
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+const youtubePlayer =
+    document.getElementById("youtubePlayer");
+
+const musicControl =
+    document.getElementById("musicControl");
+
+let musicStarted = false;
+let musicPlaying = false;
+
+
+function startMusic() {
+
+    if (!musicStarted) {
+
+        youtubePlayer.src =
+            "https://www.youtube.com/embed/dstuitW8PWM" +
+            "?autoplay=1" +
+            "&controls=0" +
+            "&loop=1" +
+            "&playlist=dstuitW8PWM" +
+            "&playsinline=1" +
+            "&rel=0" +
+            "&enablejsapi=1";
+
+        musicStarted = true;
+
+        musicPlaying = true;
+
+        musicControl.classList.add("visible");
+        musicControl.classList.add("playing");
+
+        musicControl.textContent = "🔊";
+
+        return;
+    }
+
+
+    youtubePlayer.contentWindow.postMessage(
+        JSON.stringify({
+            event: "command",
+            func: "playVideo",
+            args: []
+        }),
+        "*"
+    );
+
+
+    musicPlaying = true;
+
+    musicControl.classList.add("playing");
+
+    musicControl.textContent = "🔊";
+}
+
+
+function pauseMusic() {
+
+    if (!musicStarted) {
+        return;
+    }
+
+
+    youtubePlayer.contentWindow.postMessage(
+        JSON.stringify({
+            event: "command",
+            func: "pauseVideo",
+            args: []
+        }),
+        "*"
+    );
+
+
+    musicPlaying = false;
+
+    musicControl.classList.remove("playing");
+
+    musicControl.textContent = "🔇";
+}
+
+
+function toggleMusic() {
+
+    if (musicPlaying) {
+        pauseMusic();
+    } else {
+        startMusic();
+    }
+}
+
+
+/* =====================================================
+   OPEN LETTER
+===================================================== */
+
+let letterOpening = false;
+
+
+function openLetter() {
+
+    if (letterOpening) {
+        return;
+    }
+
+    letterOpening = true;
+
+
+    /* START MUSIC */
+
+    startMusic();
+
+
+    /* SHOW LETTER */
+
+    document
+        .getElementById("letterOverlay")
+        .classList.add("show");
+
+
+    /* CREATE FLOATING HEARTS + TEDDIES */
+
+    createFloatingLove();
+
+
+    /* TYPE LETTER */
+
+    typeLetter();
+}
+
+
+/* =====================================================
+   FLOATING HEARTS + TEDDY BEARS
+===================================================== */
+
+let floatingCreated = false;
+
+
+function createFloatingLove() {
+
+    if (floatingCreated) {
+        return;
+    }
+
+    floatingCreated = true;
+
+
+    const container =
+        document.getElementById(
+            "letterDecorations"
+        );
+
+
+    const items = [
+        "♡",
+        "♥",
+        "💕",
+        "🧸",
+        "♡",
+        "🤍",
+        "💗",
+        "🧸",
+        "♥",
+        "♡",
+        "🧸",
+        "💞",
+        "🤎",
+        "♡",
+        "🧸",
+        "♥",
+        "💕",
+        "♡"
+    ];
+
+
+    for (
+        let i = 0;
+        i < 35;
+        i++
+    ) {
+
+        const item =
+            document.createElement("div");
+
+
+        item.className =
+            "floating-love";
+
+
+        item.textContent =
+            items[
+                Math.floor(
+                    Math.random() *
+                    items.length
+                )
+            ];
+
+
+        item.style.left =
+            Math.random() * 100 + "%";
+
+
+        item.style.setProperty(
+            "--float-time",
+            (9 + Math.random() * 13) + "s"
+        );
+
+
+        item.style.setProperty(
+            "--float-delay",
+            (-Math.random() * 15) + "s"
+        );
+
+
+        item.style.setProperty(
+            "--size",
+            (.45 + Math.random() * .😎
+        );
+
+
+        item.style.setProperty(
+            "--sway",
+            ((Math.random() - .5) * 180) + "px"
+        );
+
+
+        container.appendChild(item);
+    }
+}
+
+
+/* =====================================================
+   LETTER
+===================================================== */
+
+const letterText = `HIII Ysabelle,
+
+I know nga naa na kay nabantayan nako nga murag nakagusto ko sa imoha HAHAHA. I think this is the right time to finally confess to you.
+
+Gusto tika. Dugay na.
+
+Sukad atong sige ta'g chat-chat, until katong nag-watch ta'g horror BWAHAHA. Murag didto na gyud nag-develop akong feelings para sa imoha. I don't know exactly when it happened, pero somewhere along the way, I realized nga I started liking you more than I expected.
+
+So yeah... I guess this is me finally saying it.
+
+Gusto tika, Ysabelle.
+
+I don't know what you'll think after reading this, and honestly, medyo nervous ko nga makita nimo ni HAHAHA. But I just wanted to be honest with you instead of keeping it to myself.
+
+I hope that you appreciate me :>`;
+
+
+let typingStarted = false;
+
+
+function typeLetter() {
+
+    if (typingStarted) {
+        return;
+    }
+
+    typingStarted = true;
+
+
+    const element =
+        document.getElementById(
+            "letterBody"
+        );
+
+
+    let index = 0;
+
+
+    const cursor =
+        document.createElement("span");
+
+
+    cursor.className = "cursor";
+
+
+    element.appendChild(cursor);
+
+
+    function type() {
+
+        if (
+            index <
+            letterText.length
+        ) {
+
+            cursor.before(
+                document.createTextNode(
+                    letterText.charAt(index)
+                )
+            );
+
+
+            index++;
+
+
+            setTimeout(
+                type,
+                18
+            );
+
+        } else {
+
+            setTimeout(() => {
+
+                cursor.remove();
+
+            }, 1200);
+
+        }
+    }
+
+
+    type();
+}
+
+
+/* =====================================================
+   CLOSE LETTER
+===================================================== */
+
+function closeLetter() {
+
+    document
+        .getElementById("letterOverlay")
+        .classList.remove("show");
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById("letterScene")
+            .classList.remove("active");
+
+
+        document
+            .getElementById("finalScreen")
+            .classList.add("active");
+
+
+        letterOpening = false;
+
+    }, 500);
+}
+
+
+/* =====================================================
+   BACKGROUND STARS
+===================================================== */
+
+const background =
+    document.getElementById(
+        "background"
+    );
+
+
+for (
+    let i = 0;
+    i < 130;
+    i++
+) {
+
+    const star =
+        document.createElement("div");
+
+
+    star.className = "star";
+
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+
+    star.style.setProperty(
+        "--duration",
+        (2 + Math.random() * 4) + "s"
+    );
+
+
+    star.style.setProperty(
+        "--delay",
+        (Math.random() * 4) + "s"
+    );
+
+
+    background.appendChild(star);
+}
+
+
+/* =====================================================
+   NORMAL PARTICLES
+===================================================== */
+
+for (
+    let i = 0;
+    i < 25;
+    i++
+) {
+
+    const particle =
+        document.createElement("div");
+
+
+    particle.className =
+        "particle";
+
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+
+    particle.style.setProperty(
+        "--duration",
+        (8 + Math.random() * 12) + "s"
+    );
+
+
+    particle.style.setProperty(
+        "--delay",
+        (-Math.random() * 12) + "s"
+    );
+
+
+    particle.style.setProperty(
+        "--drift",
+        ((Math.random() - .5) * 200) + "px"
+    );
+
+
+    background.appendChild(
+        particle
+    );
+}
+
+
+/* =====================================================
+   CURSOR
+===================================================== */
+
+const cursorGlow =
+    document.getElementById(
+        "cursorGlow"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+    function(event) {
+
+        cursorGlow.style.left =
+            event.clientX + "px";
+
+        cursorGlow.style.top =
+            event.clientY + "px";
+
+    }
+);
+
+</script>
+
+</body>
+</html>
